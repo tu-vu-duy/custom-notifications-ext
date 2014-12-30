@@ -59,7 +59,7 @@
 						<field name="dependencies">
 							<collection type="java.util.ArrayList">
 								<value>
-									<string>extrememicro-notification-extension</string>
+									<string>extrememicro-notification</string>
 								</value>
 							</collection>
 						</field>

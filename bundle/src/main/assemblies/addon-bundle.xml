@@ -14,7 +14,7 @@
 				<include>${project.groupId}:extrememicro-notification-ext-war:war</include>
 			</includes>
 			<scope>provided</scope>
-			<outputFileNameMapping>custom-notification.war</outputFileNameMapping>
+			<outputFileNameMapping>extrememicro-notification.war</outputFileNameMapping>
 		</dependencySet>
 
 		<!-- Libraries -->

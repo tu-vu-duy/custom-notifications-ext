@@ -2,61 +2,66 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <artifactId>extrememicro-notification-extension</artifactId>
-    <groupId>org.exoplatform.extrememicro.extension</groupId>
-    <version>1.0.0-SNAPSHOT</version>
+    <artifactId>addons-parent-pom</artifactId>
+    <groupId>org.exoplatform.addons</groupId>
+    <version>4</version>
+    <relativePath />
   </parent>
-  <artifactId>extrememicro-extension-bundle</artifactId>
-  <packaging>jar</packaging>
-  <name>ExtremeMicro Notification Extension - Bundle</name>
-  <description>ExtremeMicro Extension - Bundle</description>
-  <dependencies>
-    <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>extrememicro-notification-ext-war</artifactId>
-      <version>${project.version}</version>
-      <type>war</type>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>extrememicro-notification-ext-config</artifactId>
-      <version>${project.version}</version>
-      <scope>provided</scope>
-    </dependency>
-  </dependencies>
+  <groupId>org.exoplatform.extrememicro.extension</groupId>
+  <artifactId>extrememicro-notification-extension</artifactId>
+  <name>ExtremeMicro Notification Extension</name>
+  <description>ExtremeMicro Extension</description>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <modules>
+    <module>config</module>
+    <module>war</module>
+    <module>bundle</module>
+  </modules>
+  
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>extrememicro-notification-ext-war</artifactId>
+        <version>${project.version}</version>
+        <type>war</type>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>extrememicro-notification-ext-config</artifactId>
+        <version>${project.version}</version>
+        <scope>provided</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
   <profiles>
     <profile>
-      <id>create-bundle</id>
+      <id>project-repositories</id>
       <activation>
         <property>
-          <name>!skip-bundle</name>
+          <name>!skip-project-repositories</name>
         </property>
       </activation>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-assembly-plugin</artifactId>
-            <executions>
-              <!-- Create the addon zip and attach it to maven -->
-              <execution>
-                <id>package-addon</id>
-                <phase>package</phase>
-                <goals>
-                  <goal>single</goal>
-                </goals>
-                <configuration>
-                  <appendAssemblyId>false</appendAssemblyId>
-                  <descriptors>
-                    <descriptor>src/main/assemblies/addon-bundle.xml</descriptor>
-                  </descriptors>
-                </configuration>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
-      </build>
+      <repositories>
+        <repository>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+          <id>repository.exoplatform.org</id>
+          <url>https://repository.exoplatform.org/public</url>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+          <id>repository.exoplatform.org</id>
+          <url>https://repository.exoplatform.org/public</url>
+        </pluginRepository>
+      </pluginRepositories>
     </profile>
   </profiles>
 </project>

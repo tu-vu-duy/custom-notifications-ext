@@ -482,16 +482,6 @@
 	</external-component-plugins>
   
 
-
-
-
-
-
-
-
-
-
-
    <external-component-plugins>
     <target-component>org.exoplatform.commons.api.notification.service.setting.PluginContainer</target-component>
     <component-plugin>
